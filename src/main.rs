@@ -2,13 +2,10 @@ use std::iter;
 use std::io::{self,Write};
 use std::thread;
 use std::time::Duration;
+use termion;
 
 fn main() {
-    print!("size: ");
-    io::stdout().flush().unwrap();
-    let mut size = String::new();
-    io::stdin().read_line(&mut size).expect("Expected a string");
-    let size = size[..size.len()-1].parse::<usize>().expect("Expected a non-negative integer.");
+    let size = termion::terminal_size().unwrap().0 as usize;
     let mut text : String = iter::repeat(' ').take(size).collect();
     print!("{text}");
     io::stdout().flush().unwrap();
