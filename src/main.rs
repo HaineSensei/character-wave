@@ -17,10 +17,10 @@ fn main() {
             for i in 0..size {
                 unsafe{
                     text.as_bytes_mut()[i] = *c;
-                    print!("\r{text}");
-                    io::stdout().flush().unwrap();
-                    thread::sleep(Duration::from_millis(5));
                 }
+                print!("\r{text}");
+                io::stdout().flush().unwrap();
+                thread::sleep(Duration::from_millis(5));
             }
         }
     }   
